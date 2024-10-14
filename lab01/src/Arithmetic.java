@@ -13,6 +13,10 @@ public class Arithmetic {
     public static int product(int a, int b) {
         return a * b;
     }
+    //test the git
+//    ------
+//    ------
+//    ------
 
     /** Computes sum of two ints (incorrectly).
      * @param a Value 1
@@ -20,7 +24,7 @@ public class Arithmetic {
      * @return Sum of a and b
      * */
     public static int sum(int a, int b) {
-        return a * b;
+        return a + b;
     }
 
     public static void main(String[] args) {
