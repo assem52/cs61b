@@ -1,11 +1,68 @@
-import org.junit.jupiter.api.*;
+import 
+        org.junit.jupiter.api.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.google.common.truth.Truth.assertThat;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class JavaExercisesTest {
+//    public int[] makeDice(){
+//        int[] arr;
+//        arr = new int[]{1, 2, 3, 4, 5, 6};
+//        return arr;
+//    }
+//    public String[] takeOrder(String cusName){
+//
+//        String[] res;
+//
+//        if (cusName.equals("Ergun")){
+//
+//            res = new String[]{"beyti", "pizza", "hamburger", "tea"};
+//
+//        } else if (cusName.equals("Erik")){
+//
+//            res = new String[]{"sushi", "pasta", "avocado", "coffee"};
+//
+//        } else {
+//
+//            res = new String[]{"","",""};
+//
+//        }
+//        return res;
+//    }
+//    public int findMinMax(int[] arraOfInt){
+//
+//            int max = Integer.MIN_VALUE;
+//            int min = Integer.MAX_VALUE;
+//
+//        for (int i = 0; i < arraOfInt.length; i++){
+//
+//            if (arraOfInt[i] < min){
+//                min = arraOfInt[i];
+//            }
+//            if (arraOfInt[i] > max){
+//                max = arraOfInt[i];
+//            }
+//        }
+//        return max - min;
+//
+//    }
+//    public ArrayList<Integer> hailStone(int n) {
+//        ArrayList<Integer> a = new ArrayList<>();
+//        a.add(n);
+//        if (n == 1) {
+//            return a;
+//        } else {
+//            if (n % 2 == 0) {
+//                return hailStone(n / 2);
+//            } else {
+//                return (hailStone(n * 3 + 1));
+//            }
+//        }
+//    }
+
 
     @Test
     @Order(0)
