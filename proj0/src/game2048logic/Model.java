@@ -102,6 +102,7 @@ public class Model {
      * given a Tile object t, we get its value with t.value().
      */
     public boolean maxTileExists() {
+        // TODO: Task 3. Fill in this function.
         for(int i = 0; i <= 3; i++){
             for(int j = 0; j <= 3; j++){
                 Tile tile = board.tile(i,j);
@@ -121,6 +122,27 @@ public class Model {
      */
     public boolean atLeastOneMoveExists() {
         // TODO: Fill in this function.
+        if(emptySpaceExists()){
+            return true;
+        }else{
+            for(int i = 0; i <= 3; i++){
+                for(int j = 0; j <= 3; j++){
+                    Tile tile = board.tile(i,j);
+                    if(j < 3){
+                        Tile right = board.tile(i,j+1);
+                        if(right != null && right.value() == tile.value()){
+                            return true;
+                        }
+                    }
+                    if(i < 3){
+                        Tile below = board.tile(i + 1,j);
+                        if(below != null && below.value() == tile.value()){
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
         return false;
     }
 
