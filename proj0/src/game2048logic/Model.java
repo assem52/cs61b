@@ -148,7 +148,6 @@ public class Model {
 
     /**
      * Moves the tile at position (x, y) as far up as possible.
-     *
      * Rules for Tilt:
      * 1. If two Tiles are adjacent in the direction of motion and have
      *    the same value, they are merged into one Tile of twice the original
@@ -162,11 +161,41 @@ public class Model {
      */
     public void moveTileUpAsFarAsPossible(int x, int y) {
         Tile currTile = board.tile(x, y);
-        int myValue = currTile.value();
-        int targetY = y;
+        if (currTile == null) return; // No tile to move
 
-        // TODO: Tasks 5, 6, and 10. Fill in this function.
+        int myValue = currTile.value();
+        int targetY = y; // Where the tile should move
+
+        for (int i = y + 1; i < 4; i++) {
+            Tile t = board.tile(x, i);
+
+            if (t == null) {
+                targetY = i; // Move to the highest empty spot
+            } else if (t.value() == myValue && !t.wasMerged()) {
+                targetY = i; // Merge into this tile
+                break; // Stop further movement after merging
+            } else {
+                break; // Tile is blocked, stop searching
+            }
+        }
+
+        // Only move if the target is different from the current position
+        if (targetY != y) {
+            board.move(x, targetY, currTile);
+
+            // Check if a merge happened at the target position
+            Tile mergedTile = board.tile(x, targetY);
+            if (mergedTile.wasMerged()) {
+                score += 2 * myValue; // Correct score update
+            }
+        }
     }
+
+
+
+
+    // TODO: Tasks 5, 6, and 10. Fill in this function.
+
 
     /** Handles the movements of the tilt in column x of the board
      * by moving every tile in the column as far up as possible.
@@ -175,10 +204,19 @@ public class Model {
      * */
     public void tiltColumn(int x) {
         // TODO: Task 7. Fill in this function.
+        for(int i = 2; i >= 0; i--){
+            moveTileUpAsFarAsPossible(x, i);
+        }
+
     }
 
     public void tilt(Side side) {
         // TODO: Tasks 8 and 9. Fill in this function.
+        board.setViewingPerspective(side);
+        for(int x = 0; x < 4; x++){
+            tiltColumn(x);
+        }
+        board.setViewingPerspective(Side.NORTH);
     }
 
     /** Tilts every column of the board toward SIDE.
